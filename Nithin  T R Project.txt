@@ -1,0 +1,30 @@
+package Nithin.bookMyshow;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WindowType;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class signIn {
+	WebDriver driver;
+@Test
+	public void n()throws InterruptedException {
+
+	WebDriverManager.chromedriver().setup();
+	System.setProperty("webdriver.http.factory","jdk-http-client");
+	driver.get("https://in.bookmyshow.com/explore/home");
+	driver.findElement(By.xpath("//img[@alt='BANG']")).click(); 
+	driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[2]/header[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]")).click();
+	driver.findElement(By.xpath("//div[contains(text(),'Continue with Email')]")).click(); 
+	driver.findElement(By.xpath("//input[@id='emailId']")).sendKeys("selauto@yopmail.com"); 
+	driver.findElement(By.xpath("//button")).click(); 
+	String first = driver.getWindowHandle();
+	driver.switchTo().newWindow(WindowType.WINDOW); 
+	driver.get("https://yopmail.com"); 
+	driver.findElement(By.xpath("//input[@id='login']")).sendKeys("selauto@yopmail.com"); 
+	driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[2]/main[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/form[1]/div[1]/div[1]/div[4]/button[1]/i[1]")).click();
+	}
+}
